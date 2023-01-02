@@ -13,7 +13,7 @@ string removeDuplicates(string S)
     // str[0] = "";
     for(int i = 0; i < n-1; i++)
         if(S[i] != S[i+1])
-            str = str + S[i+1];
+            str = str + S[i];
     return str;
 }
 
@@ -22,7 +22,7 @@ int main()
     string S1 = "geeksforgeeks";
     cout << removeDuplicates(S1)<< endl;
    
-    string S2 = "aabaa";
+    string S2 = "aaaabbbba";
     cout << removeDuplicates(S2)<< endl;
     
     return 0;

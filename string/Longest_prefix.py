@@ -22,5 +22,5 @@ def LongestCommonPrefix(a):
 
 # Driver Code
 # if __name__ == "__main__":  
-input = ["geeksforgeeks", "geeks","geek", "geezer"]
+input = ["ahdieiei", "ahdfgit","ahdgkld", "ahddlkhfa"]
 print("The longest Common Prefix is :" ,LongestCommonPrefix(input))

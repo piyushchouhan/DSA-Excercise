@@ -1,31 +1,32 @@
 #include<iostream>
+#include <algorithm>
 using namespace std;
 
-int jump(int arr[], int n){
-    int j,i;
-    int ans=1;
-    for(i = 1; i < n; i++ )
-    {
-        j = arr[i];
-        for(int k = i; k < j+i; k++)
+int jump(int nums[], int n){
+        int i;
+        int ans = 0, last = 0, farthest=0;
+        for(i=0; i < n-1; i++)
         {
-            if(arr[k] == arr[n-1]){
-                ans++;
-            }else{
-                j=arr[j+i];
+            farthest = max(farthest, nums[i]+i);
+            if (farthest >= n - 1) {
+                ++ans;
+            break;
+      }
+            if(i == last)
+            {
+                last = farthest;
                 ans++;
             }
         }
-    }
-    return ans;
+        return ans;
 
 }
 
 int main()
 {
-    int arr[] = {2,3,1,1,4};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    cout << jump(arr, n)<< endl;
+    int nums[] = {2,3,1,1,4};
+    int n = sizeof(nums) / sizeof(nums[0]);
+    cout << jump(nums, n)<< endl;
     return 0;
 
 }

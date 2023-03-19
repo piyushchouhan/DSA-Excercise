@@ -24,8 +24,8 @@ int find3numbers(int arr[], int arr_size, int sum)
 
 int main()
 {
-    int arr[] = {0,0,0};
-    int sum = 0;
+    int arr[] = {1,5,9,6,3};
+    int sum = 15;
     int arr_size = sizeof(arr)/sizeof(arr[0]);
     find3numbers(arr,arr_size,sum);
     return 0;

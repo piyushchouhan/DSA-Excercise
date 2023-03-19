@@ -16,7 +16,7 @@ int find_Min_diff(int arr[], int n, int m)
     for ( int i = 0; i+m-1 < n; i++)
     {
         int diff = arr[i+m-1]- arr[i];
-        if( diff<Min_diff)
+        if( diff < Min_diff)
         {
             Min_diff = diff;
         }

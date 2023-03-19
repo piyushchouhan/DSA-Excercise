@@ -11,6 +11,7 @@ def AreDsitinct(str, i, j):
             return False
         
         visited[ord(str[k])- ord('a')] = True
+        
     return True
 
 # Returns length of the longest substring  with all distinct characters.
@@ -18,6 +19,7 @@ def AreDsitinct(str, i, j):
 def longestUniqueSubsttr(str):
     n = len(str)
 
+    #result
     m = 0
 
     for i in range(n):

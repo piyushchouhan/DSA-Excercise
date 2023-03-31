@@ -3,22 +3,20 @@
 using namespace std;
 
 int jump(int nums[], int n){
-        int i;
-        int ans = 0, last = 0, farthest=0;
-        for(i=0; i < n-1; i++)
-        {
-            farthest = max(farthest, nums[i]+i);
-            if (farthest >= n - 1) {
-                ++ans;
+    int i;
+    int ans = 0, last = 0, reach = 0;
+    for(i=0; i < n-1; i++){
+        reach = max(reach, nums[i] + i);
+        if(reach >= n-1){
+            ans++;
             break;
-      }
-            if(i == last)
-            {
-                last = farthest;
-                ans++;
-            }
+        }
+        if(i == last){
+            last = reach;
+            ans++;
         }
         return ans;
+    }
 
 }
 

@@ -1,36 +1,45 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <climits>
+
 using namespace std;
 
-int threeSumClosest(vector<int>& nums, int target) {
+vector<vector<int>> threeSum(vector<int>& nums) {
+    vector<vector<int>> result;
     sort(nums.begin(), nums.end());
     int n = nums.size();
-    int closestSum = INT_MAX;
-    for (int i = 0; i < n - 2; i++) {
-        int left = i + 1, right = n - 1;
-        while (left < right) {
-            int currSum = nums[i] + nums[left] + nums[right];
-            if (currSum == target) {
-                return target;
-            } else if (currSum < target) {
-                left++;
-            } else {
-                right--;
-            }
-            if (abs(target - currSum) < abs(target - closestSum)) {
-                closestSum = currSum;
+    for (int i = 0; i < n-2; i++) {
+        if (i == 0 || (i > 0 && nums[i] != nums[i-1])) {
+            int l = i+1, r = n-1, sum = 11 - nums[i];
+            while (l < r) {
+                if (nums[l] + nums[r] == sum) {
+                    result.push_back({nums[i], nums[l], nums[r]});
+                    while (l < r && nums[l] == nums[l+1]) l++;
+                    while (l < r && nums[r] == nums[r-1]) r--;
+                    l++; r--;
+                } else if (nums[l] + nums[r] < sum) {
+                    l++;
+                } else {
+                    r--;
+                }
             }
         }
     }
-    return closestSum;
+    return result;
 }
 
 int main() {
-    vector<int> nums = {-1, 2, 1, -4};
-    int target = 1;
-    int closestSum = threeSumClosest(nums, target);
-    cout << "Closest sum to target " << target << " is " << closestSum << endl;
+    vector<int> nums = {1,2,3,4,5,6,7};
+    vector<vector<int>> result = threeSum(nums);
+    for (int i = 0; i < result.size(); i++) {
+        cout << "[";
+        for (int j = 0; j < result[i].size(); j++) {
+            cout << result[i][j];
+            if (j != result[i].size() - 1) {
+                cout << ",";
+            }
+        }
+        cout << "]" << endl;
+    }
     return 0;
 }
